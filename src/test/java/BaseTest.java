@@ -18,6 +18,7 @@ public abstract class BaseTest {
 
         // Create a new instance of the Chrome driver
         driver = new ChromeDriver(options);
+        driver.get("https://the-internet.herokuapp.com/");
     }
 
     @AfterEach
