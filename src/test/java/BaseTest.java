@@ -10,7 +10,7 @@ public abstract class BaseTest {
     @BeforeEach
     public void setUp() {
         // Configure the Chrome driver
-        System.setProperty("webdriver.chrome.driver", "C:/Users/sebas/Downloads/driver/chromedriver-win64//chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
 
         // Add the WebDriver options
         ChromeOptions options = new ChromeOptions();
