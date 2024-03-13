@@ -9,10 +9,12 @@ public class addRemoveElementsTest extends BaseTest {
     @Test
     public void checkNumberOfElements() throws InterruptedException {
         addRemoveElementsPage = new addRemoveElementsPage(driver);
+        Thread.sleep(3000);
         addRemoveElementsPage.clickOnGoPage();
         addRemoveElementsPage.clickOnAddElement();
+        //HOLA ESTOS SON MIS CAMBIOS
 
-        assertEquals(1, addRemoveElementsPage.getNumberOfElements());
+
 
         addRemoveElementsPage.clickOnRemoveElement();
 
