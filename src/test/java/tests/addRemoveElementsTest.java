@@ -1,10 +1,14 @@
+package tests;
+
+import base.BaseTest;
 import org.junit.jupiter.api.Test;
+import pages.addRemoveElementsPage;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class addRemoveElementsTest extends BaseTest {
-    private addRemoveElementsPage addRemoveElementsPage;
+    private pages.addRemoveElementsPage addRemoveElementsPage;
 
     @Test
     public void checkNumberOfElements() throws InterruptedException {

@@ -1,10 +1,14 @@
+package tests;
+
+import base.BaseTest;
 import org.junit.jupiter.api.Test;
+import pages.brokenImagePage;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class brokenImageTest extends BaseTest {
-    private brokenImagePage brokenImagePage;
+    private pages.brokenImagePage brokenImagePage;
 
     @Test
     public void testBrokenImages() throws InterruptedException {

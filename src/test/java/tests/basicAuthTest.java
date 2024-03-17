@@ -1,9 +1,13 @@
+package tests;
+
+import base.BaseTest;
 import org.junit.jupiter.api.Test;
+import pages.basicAuthPage;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class basicAuthTest extends BaseTest {
-    private basicAuthPage basicAuthPage;
+    private pages.basicAuthPage basicAuthPage;
 
     @Test
     public void successLogin()  throws InterruptedException{

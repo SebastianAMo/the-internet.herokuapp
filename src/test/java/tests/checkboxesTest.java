@@ -1,10 +1,13 @@
+package tests;
+
+import base.BaseTest;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
+import pages.checkboxesPage;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class checkboxesTest extends BaseTest {
-    private  checkboxesPage checkboxesPage;
+    private pages.checkboxesPage checkboxesPage;
 
     @Test
     public void testCheckbox1() throws InterruptedException {

@@ -10,17 +10,19 @@ repositories {
 }
 
 dependencies {
+    // Selenium para pruebas automatizadas en navegadores
     testImplementation("org.seleniumhq.selenium:selenium-java:4.18.1")
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
-    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 
+    // JUnit Jupiter (JUnit 5) usando BOM para manejar las versiones de manera coherente
+    testImplementation (platform("org.junit:junit-bom:5.9.1"))
+    testImplementation ("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine")
 }
 
 tasks.test {
+    // Usar JUnit Platform para las pruebas
     useJUnitPlatform()
 
-    // Set system properties from command line arguments
-    systemProperty("browser", System.getProperty("browser", "chrome"))
-
+    // Pasar propiedades del sistema, útil para configurar el navegador en pruebas Selenium
+    systemProperty( "browser", System.getProperty("browser", "chrome"))
 }

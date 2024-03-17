@@ -1,11 +1,14 @@
+package tests;
+
+import base.BaseTest;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
+import pages.fileDownloadPage;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
-import java.time.Duration;
+
 public class fileDownloadTest extends BaseTest {
-    private fileDownloadPage fileDownloadPage;
+    private pages.fileDownloadPage fileDownloadPage;
 
     @Test
     public void testFileDownload() throws InterruptedException {
