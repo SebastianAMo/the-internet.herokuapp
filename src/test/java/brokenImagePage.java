@@ -3,10 +3,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.net.HttpURLConnection;
 import java.util.List;
 
-import java.net.URL;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;

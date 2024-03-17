@@ -19,4 +19,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+
+    // Set system properties from command line arguments
+    systemProperty("browser", System.getProperty("browser", "chrome"))
+
 }
