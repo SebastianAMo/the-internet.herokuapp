@@ -17,12 +17,17 @@ dependencies {
     testImplementation (platform("org.junit:junit-bom:5.9.1"))
     testImplementation ("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine")
+
 }
 
+
 tasks.test {
-    // Usar JUnit Platform para las pruebas
     useJUnitPlatform()
 
-    // Pasar propiedades del sistema, útil para configurar el navegador en pruebas Selenium
-    systemProperty( "browser", System.getProperty("browser", "chrome"))
+    // Habilitar ejecución en paralelo
+    maxParallelForks = Runtime.getRuntime().availableProcessors() / 2
+
+    systemProperty ("SELENIUM_GRID_URL", System.getProperty("SELENIUM_GRID_URL", "http://localhost:4444/wd/hub"))
+    // Configurar propiedades del sistema para el navegador
+    systemProperty("browser", System.getProperty("browser", "chrome"))
 }
