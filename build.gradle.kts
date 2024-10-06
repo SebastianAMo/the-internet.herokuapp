@@ -18,14 +18,10 @@ dependencies {
 }
 
 tasks.test {
-    useTestNG()
-
-    // Habilitar ejecución en paralelo
-    maxParallelForks = Runtime.getRuntime().availableProcessors() / 2
+    useTestNG {
+        suites ("src/test/resources/testng.xml")  // Ruta al archivo testng.xml
+    }
 
     // Configurar propiedades del sistema para Selenium Grid
     systemProperty("SELENIUM_GRID_URL", System.getProperty("SELENIUM_GRID_URL", "http://10.147.20.27:4444/wd/hub"))
-
-    // Configurar propiedades del sistema para el navegador
-    systemProperty("browser", System.getProperty("browser", "chrome"))
 }
