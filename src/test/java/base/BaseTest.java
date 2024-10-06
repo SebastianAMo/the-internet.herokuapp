@@ -1,24 +1,27 @@
 package base;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.HashMap;
-
+import org.testng.annotations.Optional;
 public abstract class BaseTest {
     protected WebDriver driver;
     protected String downloadFilepath;
 
-    @BeforeEach
-    public void setUp() throws MalformedURLException {
-        String browserType = System.getProperty("browser", "chrome");
+    @BeforeMethod
+    @Parameters({"browser", "SELENIUM_GRID_URL","mode"})
+    public void setUp(String browserType, String gridUrl,@Optional("defaultMode")  String mode) throws MalformedURLException {
+        browserType = browserType != null ? browserType : System.getProperty("browser", "chrome");
+        gridUrl = gridUrl != null ? gridUrl : System.getProperty("SELENIUM_GRID_URL", "http://localhost:4444/wd/hub");
+        mode = mode != null ? mode : System.getProperty("mode");
         downloadFilepath = Paths.get(System.getProperty("user.home"), "Downloads").toString();
 
         // Seleccionar el navegador en base a la propiedad "browser"
@@ -33,24 +36,20 @@ public abstract class BaseTest {
             options.setExperimentalOption("prefs", chromePrefs);
             options.addArguments("--start-maximized");
 
-            if ("headless".equals(System.getProperty("mode"))) {
+            if ("headless".equalsIgnoreCase(mode)) {
                 options.addArguments("--headless");
                 options.addArguments("--disable-gpu");
             }
 
-            // Leer la URL del hub de Selenium Grid desde la propiedad del sistema
-            String gridUrl = System.getProperty("SELENIUM_GRID_URL", "http://localhost:4444/wd/hub");
             driver = new RemoteWebDriver(new URL(gridUrl), options);
 
         } else if (browserType.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
 
-            if ("headless".equals(System.getProperty("mode"))) {
+            if ("headless".equalsIgnoreCase(mode)) {
                 options.addArguments("--headless");
             }
 
-            // Leer la URL del hub de Selenium Grid desde la propiedad del sistema
-            String gridUrl = System.getProperty("SELENIUM_GRID_URL", "http://localhost:4444/wd/hub");
             driver = new RemoteWebDriver(new URL(gridUrl), options);
         }
 
@@ -58,7 +57,7 @@ public abstract class BaseTest {
         driver.get("https://the-internet.herokuapp.com/");
     }
 
-    @AfterEach
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();

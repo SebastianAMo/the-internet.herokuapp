@@ -1,10 +1,9 @@
 package tests;
 
 import base.BaseTest;
-import org.junit.jupiter.api.Test;
 import pages.fileDownloadPage;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 import java.io.File;
 
 public class fileDownloadTest extends BaseTest {

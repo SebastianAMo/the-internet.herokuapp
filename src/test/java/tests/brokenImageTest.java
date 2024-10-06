@@ -1,12 +1,13 @@
 package tests;
 
 import base.BaseTest;
-import org.junit.jupiter.api.Test;
 import pages.brokenImagePage;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
 public class brokenImageTest extends BaseTest {
     private pages.brokenImagePage brokenImagePage;
 

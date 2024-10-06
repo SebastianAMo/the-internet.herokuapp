@@ -11,23 +11,21 @@ repositories {
 
 dependencies {
     // Selenium para pruebas automatizadas en navegadores
-    testImplementation("org.seleniumhq.selenium:selenium-java:4.18.1")
+    testImplementation("org.seleniumhq.selenium:selenium-java:4.25.0")
 
-    // JUnit Jupiter (JUnit 5) usando BOM para manejar las versiones de manera coherente
-    testImplementation (platform("org.junit:junit-bom:5.9.1"))
-    testImplementation ("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine")
-
+    // Dependencia de TestNG
+    testImplementation("org.testng:testng:7.9.0")
 }
 
-
 tasks.test {
-    useJUnitPlatform()
+    useTestNG()
 
     // Habilitar ejecución en paralelo
     maxParallelForks = Runtime.getRuntime().availableProcessors() / 2
 
-    systemProperty ("SELENIUM_GRID_URL", System.getProperty("SELENIUM_GRID_URL", "http://localhost:4444/wd/hub"))
+    // Configurar propiedades del sistema para Selenium Grid
+    systemProperty("SELENIUM_GRID_URL", System.getProperty("SELENIUM_GRID_URL", "http://10.147.20.27:4444/wd/hub"))
+
     // Configurar propiedades del sistema para el navegador
     systemProperty("browser", System.getProperty("browser", "chrome"))
 }

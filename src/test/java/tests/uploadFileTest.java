@@ -1,9 +1,10 @@
 package tests;
 import base.BaseTest;
-import org.junit.jupiter.api.Test;
 import pages.uploadFilePage;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
 import java.io.File;
 
 public class uploadFileTest extends BaseTest{

@@ -1,10 +1,10 @@
 package tests;
 
 import base.BaseTest;
-import org.junit.jupiter.api.Test;
 import pages.checkboxesPage;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
 public class checkboxesTest extends BaseTest {
     private pages.checkboxesPage checkboxesPage;

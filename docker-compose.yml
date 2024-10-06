@@ -7,7 +7,7 @@ services:
       - "4444:4444"
 
   chrome:
-    image: selenium/node-chrome:4.0.0
+    image: selenium/node-chrome:4.25.0-20240922
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
@@ -17,10 +17,10 @@ services:
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - VNC_NO_PASSWORD=1
-      - SE_NODE_MAX_SESSIONS=2
+      - SE_NODE_MAX_SESSIONS=4
 
   firefox:
-    image: selenium/node-firefox:4.0.0
+    image: selenium/node-firefox:4.25.0-20240922
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
@@ -29,3 +29,4 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=4

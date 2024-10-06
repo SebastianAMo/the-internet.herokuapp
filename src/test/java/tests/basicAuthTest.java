@@ -1,10 +1,10 @@
 package tests;
 
 import base.BaseTest;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pages.basicAuthPage;
+import static org.testng.Assert.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class basicAuthTest extends BaseTest {
     private pages.basicAuthPage basicAuthPage;

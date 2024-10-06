@@ -1,44 +1,44 @@
 package tests;
 
 import base.BaseTest;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.addRemoveElementsPage;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.testng.Assert.assertEquals;
 
 public class addRemoveElementsTest extends BaseTest {
     private pages.addRemoveElementsPage addRemoveElementsPage;
 
+    @BeforeMethod
+    public void setUp() {
+        addRemoveElementsPage = new addRemoveElementsPage(driver);
+    }
+
     @Test
     public void checkNumberOfElements() throws InterruptedException {
-        addRemoveElementsPage = new addRemoveElementsPage(driver);
         addRemoveElementsPage.clickOnGoPage();
         addRemoveElementsPage.clickOnAddElement();
 
-        assertEquals(1, addRemoveElementsPage.getNumberOfElements());
+        assertEquals(addRemoveElementsPage.getNumberOfElements(), 1);
 
         addRemoveElementsPage.clickOnRemoveElement();
 
-        assertEquals(0, addRemoveElementsPage.getNumberOfElements());
-
+        assertEquals(addRemoveElementsPage.getNumberOfElements(), 0);
     }
 
     @Test
     public void checkNumberOfElements2() throws InterruptedException {
-        addRemoveElementsPage = new addRemoveElementsPage(driver);
         addRemoveElementsPage.clickOnGoPage();
         addRemoveElementsPage.clickOnAddElement();
         addRemoveElementsPage.clickOnAddElement();
         addRemoveElementsPage.clickOnAddElement();
 
-        assertEquals(3, addRemoveElementsPage.getNumberOfElements());
+        assertEquals(addRemoveElementsPage.getNumberOfElements(), 3);
 
         addRemoveElementsPage.clickOnRemoveElement();
         addRemoveElementsPage.clickOnRemoveElement();
 
-        assertEquals(1, addRemoveElementsPage.getNumberOfElements());
-
+        assertEquals(addRemoveElementsPage.getNumberOfElements(), 1);
     }
-
 }
