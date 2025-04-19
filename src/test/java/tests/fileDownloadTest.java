@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import java.io.File;
 
-public class fileDownloadTest extends BaseTest {
+public class FileDownloadTest extends BaseTest {
     private pages.fileDownloadPage fileDownloadPage;
 
     @Test

@@ -23,5 +23,7 @@ tasks.test {
     }
 
     // Configurar propiedades del sistema para Selenium Grid
-    systemProperty("SELENIUM_GRID_URL", System.getProperty("SELENIUM_GRID_URL", "http://10.147.20.27:4444/wd/hub"))
+    systemProperty("SELENIUM_GRID_URL", System.getProperty("SELENIUM_GRID_URL", "http://localhost:4444/wd/hub"))
+    systemProperty("mode", System.getProperty("mode", "normal"))
+
 }

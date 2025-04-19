@@ -6,7 +6,7 @@ import pages.checkboxesPage;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
-public class checkboxesTest extends BaseTest {
+public class CheckboxesTest extends BaseTest {
     private pages.checkboxesPage checkboxesPage;
 
     @Test

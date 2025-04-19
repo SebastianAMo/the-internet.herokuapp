@@ -8,14 +8,14 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
-public class brokenImageTest extends BaseTest {
+public class BrokenImageTest extends BaseTest {
     private pages.brokenImagePage brokenImagePage;
 
     @Test
     public void testBrokenImages() throws InterruptedException {
         brokenImagePage = new brokenImagePage(driver);
         brokenImagePage.clickOnGoPage();
-        assertEquals(2, brokenImagePage.getNumberOfBrokenImages());
+        assertEquals( brokenImagePage.getNumberOfBrokenImages(), 2);
         Thread.sleep(2000);
     }
 
@@ -23,7 +23,7 @@ public class brokenImageTest extends BaseTest {
     public void testBrokenImagesWithHTTP() throws InterruptedException, IOException {
         brokenImagePage = new brokenImagePage(driver);
         brokenImagePage.clickOnGoPage();
-        assertEquals(2, brokenImagePage.getNumberofBrokenImagesWithHTTP());
+        assertEquals(brokenImagePage.getNumberofBrokenImagesWithHTTP(), 2);
         Thread.sleep(2000);
     }
 }

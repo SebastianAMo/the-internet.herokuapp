@@ -6,7 +6,7 @@ import pages.basicAuthPage;
 import static org.testng.Assert.assertEquals;
 
 
-public class basicAuthTest extends BaseTest {
+public class BasicAuthTest extends BaseTest {
     private pages.basicAuthPage basicAuthPage;
 
     @Test
@@ -14,7 +14,7 @@ public class basicAuthTest extends BaseTest {
         basicAuthPage = new basicAuthPage(driver);
         basicAuthPage.addHeaders("admin", "admin");
         basicAuthPage.clickOnGoPage();
-        assertEquals("Congratulations! You must have the proper credentials.", basicAuthPage.getSuccessMessage());
+        assertEquals(basicAuthPage.getSuccessMessage(), "Congratulations! You must have the proper credentials.");
         Thread.sleep(2000);
     }
 }

@@ -7,7 +7,7 @@ import static org.testng.Assert.*;
 
 import java.io.File;
 
-public class uploadFileTest extends BaseTest{
+public class UploadFileTest extends BaseTest{
     private pages.uploadFilePage uploadFilePage;
     private String filePath = System.getProperty("user.dir") + "/src/test/resources/test.json";
 

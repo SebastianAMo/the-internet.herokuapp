@@ -7,7 +7,7 @@ import pages.addRemoveElementsPage;
 
 import static org.testng.Assert.assertEquals;
 
-public class addRemoveElementsTest extends BaseTest {
+public class AddRemoveElementsTest extends BaseTest {
     private pages.addRemoveElementsPage addRemoveElementsPage;
 
     @BeforeMethod

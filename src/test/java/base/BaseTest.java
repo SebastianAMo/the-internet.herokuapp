@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import java.io.Console;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -26,6 +27,12 @@ public abstract class BaseTest {
                       @Optional("normal") String mode) throws MalformedURLException {
 
         downloadFilepath = Paths.get(System.getProperty("user.home"), "Downloads").toString();
+
+        System.out.println(downloadFilepath);
+        System.out.println("Browser: " + browserType);
+        System.out.println("Grid: " + gridUrl);
+        System.out.println("Mode: " + mode);
+
 
         switch (browserType.toLowerCase()) {
             case "chrome":
