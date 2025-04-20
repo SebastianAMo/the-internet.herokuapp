@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import java.io.Console;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -17,8 +16,12 @@ import java.util.HashMap;
 
 public abstract class BaseTest {
 
-    protected WebDriver driver;
+    private static final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
     protected String downloadFilepath;
+
+    protected WebDriver getDriver() {
+        return threadLocalDriver.get();
+    }
 
     @BeforeMethod
     @Parameters({"browser", "SELENIUM_GRID_URL", "mode"})
@@ -28,11 +31,12 @@ public abstract class BaseTest {
 
         downloadFilepath = Paths.get(System.getProperty("user.home"), "Downloads").toString();
 
-        System.out.println(downloadFilepath);
+        System.out.println("Download path: " + downloadFilepath);
         System.out.println("Browser: " + browserType);
         System.out.println("Grid: " + gridUrl);
         System.out.println("Mode: " + mode);
 
+        WebDriver driver;
 
         switch (browserType.toLowerCase()) {
             case "chrome":
@@ -45,8 +49,9 @@ public abstract class BaseTest {
                 throw new IllegalArgumentException("Navegador no soportado: " + browserType);
         }
 
-        // Cargar la página de prueba
-        driver.get("https://the-internet.herokuapp.com/");
+        threadLocalDriver.set(driver);
+
+        getDriver().get("https://the-internet.herokuapp.com/");
     }
 
     private WebDriver setupChromeDriver(String gridUrl, String mode) throws MalformedURLException {
@@ -80,8 +85,10 @@ public abstract class BaseTest {
 
     @AfterMethod
     public void tearDown() {
+        WebDriver driver = getDriver();
         if (driver != null) {
             driver.quit();
+            threadLocalDriver.remove();
         }
     }
 }
